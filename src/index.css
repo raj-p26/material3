@@ -1,68 +1,112 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@theme {
+  --color-primary: rgb(101 85 143);
+  --color-surface-tint: rgb(101 85 143);
+  --color-on-primary: rgb(255 255 255);
+  --color-primary-container: rgb(233 221 255);
+  --color-on-primary-container: rgb(77 61 117);
+  --color-secondary: rgb(98 91 113);
+  --color-on-secondary: rgb(255 255 255);
+  --color-secondary-container: rgb(232 222 248);
+  --color-on-secondary-container: rgb(74 68 88);
+  --color-tertiary: rgb(126 82 96);
+  --color-on-tertiary: rgb(255 255 255);
+  --color-tertiary-container: rgb(255 217 227);
+  --color-on-tertiary-container: rgb(99 59 72);
+  --color-error: rgb(186 26 26);
+  --color-on-error: rgb(255 255 255);
+  --color-error-container: rgb(255 218 214);
+  --color-on-error-container: rgb(147 0 10);
+  --color-background: rgb(253 247 255);
+  --color-on-background: rgb(29 27 32);
+  --color-surface: rgb(253 247 255);
+  --color-on-surface: rgb(29 27 32);
+  --color-surface-variant: rgb(231 224 235);
+  --color-on-surface-variant: rgb(73 69 78);
+  --color-outline: rgb(122 117 127);
+  --color-outline-variant: rgb(202 196 207);
+  --color-inverse-surface: rgb(50 47 53);
+  --color-inverse-on-surface: rgb(245 239 247);
+  --color-inverse-primary: rgb(207 189 254);
+  --color-primary-fixed: rgb(233 221 255);
+  --color-on-primary-fixed: rgb(32 16 71);
+  --color-primary-fixed-dim: rgb(207 189 254);
+  --color-on-primary-fixed-variant: rgb(77 61 117);
+  --color-secondary-fixed: rgb(232 222 248);
+  --color-on-secondary-fixed: rgb(30 25 43);
+  --color-secondary-fixed-dim: rgb(203 194 219);
+  --color-on-secondary-fixed-variant: rgb(74 68 88);
+  --color-tertiary-fixed: rgb(255 217 227);
+  --color-on-tertiary-fixed: rgb(49 16 29);
+  --color-tertiary-fixed-dim: rgb(239 184 200);
+  --color-on-tertiary-fixed-variant: rgb(99 59 72);
+  --color-surface-dim: rgb(222 216 224);
+  --color-surface-bright: rgb(253 247 255);
+  --color-surface-container-lowest: rgb(255 255 255);
+  --color-surface-container-low: rgb(248 242 250);
+  --color-surface-container: rgb(242 236 244);
+  --color-surface-container-high: rgb(236 230 238);
+  --color-surface-container-highest: rgb(230 224 233);
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* dark color scheme */
+  --color-primary-dark: rgb(207 189 254);
+  --color-surface-tint-dark: rgb(207 189 254);
+  --color-on-primary-dark: rgb(54 39 93);
+  --color-primary-container-dark: rgb(77 61 117);
+  --color-on-primary-container-dark: rgb(233 221 255);
+  --color-secondary-dark: rgb(203 194 219);
+  --color-on-secondary-dark: rgb(51 45 65);
+  --color-secondary-container-dark: rgb(74 68 88);
+  --color-on-secondary-container-dark: rgb(232 222 248);
+  --color-tertiary-dark: rgb(239 184 200);
+  --color-on-tertiary-dark: rgb(74 37 50);
+  --color-tertiary-container-dark: rgb(99 59 72);
+  --color-on-tertiary-container-dark: rgb(255 217 227);
+  --color-error-dark: rgb(255 180 171);
+  --color-on-error-dark: rgb(105 0 5);
+  --color-error-container-dark: rgb(147 0 10);
+  --color-on-error-container-dark: rgb(255 218 214);
+  --color-background-dark: rgb(20 18 24);
+  --color-on-background-dark: rgb(230 224 233);
+  --color-surface-dark: rgb(20 18 24);
+  --color-on-surface-dark: rgb(230 224 233);
+  --color-surface-variant-dark: rgb(73 69 78);
+  --color-on-surface-variant-dark: rgb(202 196 207);
+  --color-outline-dark: rgb(148 143 153);
+  --color-outline-variant-dark: rgb(73 69 78);
+  --color-inverse-surface-dark: rgb(230 224 233);
+  --color-inverse-on-surface-dark: rgb(50 47 53);
+  --color-inverse-primary-dark: rgb(101 85 143);
+  --color-primary-fixed-dark: rgb(233 221 255);
+  --color-on-primary-fixed-dark: rgb(32 16 71);
+  --color-primary-fixed-dim-dark: rgb(207 189 254);
+  --color-on-primary-fixed-variant-dark: rgb(77 61 117);
+  --color-secondary-fixed-dark: rgb(232 222 248);
+  --color-on-secondary-fixed-dark: rgb(30 25 43);
+  --color-secondary-fixed-dim-dark: rgb(203 194 219);
+  --color-on-secondary-fixed-variant-dark: rgb(74 68 88);
+  --color-tertiary-fixed-dark: rgb(255 217 227);
+  --color-on-tertiary-fixed-dark: rgb(49 16 29);
+  --color-tertiary-fixed-dim-dark: rgb(239 184 200);
+  --color-on-tertiary-fixed-variant-dark: rgb(99 59 72);
+  --color-surface-dim-dark: rgb(20 18 24);
+  --color-surface-bright-dark: rgb(59 56 62);
+  --color-surface-container-lowest-dark: rgb(15 13 19);
+  --color-surface-container-low-dark: rgb(29 27 32);
+  --color-surface-container-dark: rgb(33 31 36);
+  --color-surface-container-high-dark: rgb(43 41 47);
+  --color-surface-container-highest-dark: rgb(54 52 58);
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  --color-shadow: rgb(0 0 0);
+  --color-scrim: rgb(0 0 0);
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  --shadow-elevation-level-0: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-1: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-2: 0 0 4px 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-3: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-4: 0 0 9px 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-5: 0 0 13px 1px rgba(0, 0, 0, 0.5);
 }

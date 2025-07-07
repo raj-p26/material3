@@ -1,0 +1,112 @@
+@reference "../../../index.css";
+
+.button-base {
+  @apply flex
+  items-center
+  justify-center
+  transition
+  cursor-pointer
+  disabled:cursor-not-allowed
+  focus:outline-3
+  outline-offset-2
+  bg-primary
+  text-on-primary
+  outline-secondary
+  dark:bg-primary-dark
+  dark:text-on-primary-dark
+  dark:outline-secondary-dark;
+}
+
+.filled,
+.tonal,
+.elevated,
+.outlined,
+.text {
+  @apply disabled:bg-on-surface/10
+  disabled:text-on-surface/38
+  disabled:dark:bg-on-surface-dark/10
+  disabled:dark:text-on-surface-dark/38;
+}
+
+.elevated {
+  @apply bg-surface-container-low
+  text-primary
+  shadow-elevation-level-1
+  hover:shadow-elevation-level-2
+  hover:bg-primary/8
+  focus:bg-primary/10
+  focus:shadow-elevation-level-1
+  dark:bg-surface-container-low-dark
+  dark:text-primary-dark
+  dark:hover:bg-primary-dark/8
+  dark:focus:bg-primary-dark/10;
+}
+
+.filled {
+  @apply bg-primary
+  text-on-primary
+  hover:bg-primary/92
+  dark:bg-primary-dark
+  dark:text-on-primary-dark
+  dark:hover:bg-primary-dark/92;
+}
+
+.tonal {
+  @apply bg-secondary-container
+  text-on-secondary-container
+  hover:bg-secondary-container/92
+  hover:shadow-elevation-level-1
+  dark:bg-secondary-container-dark
+  dark:text-on-secondary-container-dark
+  dark:hover:bg-secondary-container-dark/92;
+}
+
+.outlined {
+  @apply border
+  border-outline-variant
+  bg-transparent
+  hover:bg-on-surface-variant/8
+  text-on-surface-variant
+  dark:border-outline-variant-dark
+  dark:text-on-surface-variant-dark
+  dark:hover:bg-on-surface-variant-dark/8;
+}
+
+.text {
+  @apply bg-transparent
+  text-primary
+  hover:bg-primary/8
+  focus:bg-primary/10
+  dark:text-primary-dark
+  dark:hover:bg-primary-dark/8
+  dark:focus:bg-primary-dark/10;
+}
+
+.square-xs,
+.square-sm {
+  @apply rounded-xl active:rounded-lg;
+}
+
+.square-md {
+  @apply rounded-2xl active:rounded-xl;
+}
+
+.square-lg,
+.square-xl {
+  @apply rounded-[28px] active:rounded-2xl;
+}
+
+@keyframes animate-ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-container {
+  @apply relative overflow-hidden;
+}

@@ -1,0 +1,91 @@
+@reference "../../../index.css";
+
+.fab-baseline,
+.fab-medium,
+.fab-large {
+  @apply shadow-elevation-level-3
+  focus:outline-3
+  outline-offset-3
+  focus:opacity-90
+  hover:opacity-[0.9]
+  hover:shadow-elevation-level-4;
+}
+
+.fab-baseline {
+  @apply size-14 rounded-2xl;
+}
+
+.fab-medium {
+  @apply size-20 rounded-[20px];
+}
+
+.fab-large {
+  @apply size-24 rounded-[28px];
+}
+
+.fab-tonal-primary {
+  @apply bg-primary-container
+  text-on-primary-container
+  focus:outline-on-primary-container/90
+  dark:bg-primary-container-dark
+  dark:text-on-primary-container-dark
+  dark:focus:outline-on-primary-container-dark/90;
+}
+
+.fab-tonal-secondary {
+  @apply bg-secondary-container
+  text-on-secondary-container
+  focus:outline-on-secondary-container
+  dark:bg-secondary-container-dark
+  dark:text-on-secondary-container-dark
+  dark:focus:outline-on-secondary-container-dark;
+}
+
+.fab-tonal-tertiary {
+  @apply bg-tertiary-container
+  text-on-tertiary-container
+  focus:outline-on-tertiary-container
+  dark:bg-tertiary-container-dark
+  dark:text-on-tertiary-container-dark
+  dark:focus:outline-on-tertiary-container-dark;
+}
+
+.fab-base-primary {
+  @apply bg-primary
+  text-on-primary
+  focus:outline-on-primary-container
+  dark:bg-primary-dark
+  dark:text-on-primary-dark
+  dark:focus:outline-on-primary-container-dark;
+}
+.fab-base-secondary {
+  @apply bg-secondary
+  text-on-secondary
+  outline-on-secondary-container
+  dark:bg-secondary-dark
+  dark:text-on-secondary-dark
+  dark:outline-on-secondary-container-dark;
+}
+.fab-base-tertiary {
+  @apply bg-tertiary
+  text-on-tertiary
+  outline-on-tertiary-container
+  dark:bg-tertiary-dark
+  dark:text-on-tertiary-dark
+  dark:outline-on-tertiary-container-dark;
+}
+
+@keyframes animate-ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-container {
+  @apply relative overflow-hidden;
+}
