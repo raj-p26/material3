@@ -1,0 +1,23 @@
+@reference "../../index.css";
+
+.appbar-common {
+  @apply px-1
+  bg-surface
+  dark:bg-surface-dark;
+}
+
+.appbar-scroll {
+  @apply bg-surface-container
+  shadow-elevation-level-2
+  dark:bg-surface-container-dark;
+}
+
+.appbar-title {
+  @apply font-normal text-on-surface dark:text-on-surface-dark;
+}
+
+.appbar-subtitle {
+  @apply font-medium
+  text-on-surface-variant
+  dark:text-on-surface-variant-dark;
+}

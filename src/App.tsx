@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { ThemeContext } from "./context/themeContext";
-import { FloatingActionButton } from "./components/Buttons/FloatingActionButton";
+import { AppBar } from "./components/AppBar";
 
 function App() {
-  const addIcon = <span className="material-symbols-outlined">add</span>;
-  const variants = ["primary", "secondary", "tertiary"] as const;
+  const backIcon = (
+    <span className="material-symbols-outlined">arrow_back</span>
+  );
   const { theme, setTheme } = useContext(ThemeContext);
   const changeTheme = () => {
     if (!setTheme) return;
@@ -15,7 +16,7 @@ function App() {
   return (
     <>
       <div
-        className={`h-[100vh]  ${
+        className={`h-[120vh]  ${
           theme === "dark" ? "dark" : ""
         } bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark`}
       >
@@ -23,13 +24,27 @@ function App() {
           <input type="checkbox" className="size-10" onChange={changeTheme} />
           Dark Mode
         </label>
-        <div className="flex flex-col justify-center space-y-4 p-4">
-          {variants.map((variant, idx) => (
-            <FloatingActionButton variant={variant} key={idx} type="base">
-              {addIcon}
-            </FloatingActionButton>
-          ))}
-        </div>
+        <AppBar
+          title="Headline"
+          leading={backIcon}
+          subtitle="Subtitle"
+          centered
+        />
+        <div className="h-4"></div>
+        <AppBar
+          title="Headline"
+          leading={backIcon}
+          subtitle="Subtitle"
+          size="md"
+          centered
+        />
+        <div className="h-4"></div>
+        <AppBar
+          title="Headline"
+          leading={backIcon}
+          subtitle="Subtitle"
+          size="lg"
+        />
       </div>
     </>
   );

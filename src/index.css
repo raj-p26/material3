@@ -109,4 +109,6 @@
   --shadow-elevation-level-3: 0 0 7px 1px rgba(0, 0, 0, 0.5);
   --shadow-elevation-level-4: 0 0 9px 1px rgba(0, 0, 0, 0.5);
   --shadow-elevation-level-5: 0 0 13px 1px rgba(0, 0, 0, 0.5);
+
+  --font-roboto: "Roboto", "sans-serif";
 }
