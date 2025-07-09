@@ -9,11 +9,7 @@
   disabled:cursor-not-allowed
   focus:outline-3
   outline-offset-2
-  bg-primary
-  text-on-primary
   outline-secondary
-  dark:bg-primary-dark
-  dark:text-on-primary-dark
   dark:outline-secondary-dark;
 }
 
