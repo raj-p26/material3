@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "./context/themeContext";
-import { Badge } from "./components/Badge/Badge";
+import { Checkbox } from "./components/Checkbox";
 
 function App() {
   const { theme, setTheme } = useContext(ThemeContext);
+  const [check, setCheck] = useState<boolean>(true);
   const changeTheme = () => {
     if (!setTheme) return;
     if (theme === "dark") setTheme("light");
@@ -18,10 +19,11 @@ function App() {
         } bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark`}
       >
         <label className="flex items-center justify-center gap-2 p-4">
-          <input type="checkbox" className="size-10" onChange={changeTheme} />
+          <Checkbox checked={theme === "dark"} onChange={changeTheme} />
           Dark Mode
         </label>
-        <Badge text="999+" />
+
+        <Checkbox checked={check} onChange={() => setCheck((prev) => !prev)} />
       </div>
     </>
   );

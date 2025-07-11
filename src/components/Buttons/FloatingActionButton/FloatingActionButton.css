@@ -3,7 +3,8 @@
 .fab-baseline,
 .fab-medium,
 .fab-large {
-  @apply shadow-elevation-level-3
+  @apply flex items-center justify-center
+  shadow-elevation-level-3
   focus:outline-3
   outline-offset-3
   focus:opacity-90

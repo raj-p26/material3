@@ -8,7 +8,8 @@ export function useRippleEffect<T extends HTMLElement>() {
 
     if (!container) return;
 
-    container.classList.add("ripple-container");
+    container.classList.add("relative");
+    container.classList.add("overflow-hidden");
 
     const rect = container.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
@@ -24,13 +25,15 @@ export function useRippleEffect<T extends HTMLElement>() {
     ripple.style.borderRadius = "50%";
     ripple.style.pointerEvents = "none";
     ripple.style.background = "rgba(0, 0, 0, 0.3)";
-    ripple.style.animation = "animate-ripple 0.8s ease-out";
+    ripple.style.animation = "animate-ripple 0.5s linear";
 
     container.appendChild(ripple);
 
     ripple.addEventListener("animationend", () => {
-      container.classList.remove("ripple-container");
       ripple.remove();
+      // removing position relative and overflow hidden to the container
+      // breaks the animation.
+      // TODO: find a way to fix that
     });
   };
 
