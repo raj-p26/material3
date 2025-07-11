@@ -103,12 +103,12 @@
   --color-shadow: rgb(0 0 0);
   --color-scrim: rgb(0 0 0);
 
-  --shadow-elevation-level-0: 0 0 0 1px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-level-1: 0 0 2px 1px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-level-2: 0 0 4px 1px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-level-3: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-level-4: 0 0 9px 1px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-level-5: 0 0 13px 1px rgba(0, 0, 0, 0.5);
+  --shadow-elevation-level-0: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-level-1: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-level-2: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-level-3: 0 3px 6px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-level-4: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-level-5: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   --font-roboto: "Roboto", "sans-serif";
 }
