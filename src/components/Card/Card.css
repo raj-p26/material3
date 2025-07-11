@@ -1,0 +1,72 @@
+@reference "../../index.css";
+
+.card-base {
+  @apply m-2 p-4
+  outline-offset-2
+  rounded-xl
+  focus:outline-3
+  focus:outline-secondary
+  focus:bg-on-surface/10
+  hover:bg-on-surface/8
+  dark:focus:outline-secondary-dark
+  dark:focus:bg-on-surface-dark/10
+  dark:hover:bg-on-surface-dark/8;
+}
+
+.elevated {
+  @apply bg-surface-container-low
+  shadow-elevation-level-1
+  hover:shadow-elevation-level-2
+  dark:bg-surface-container-low-dark;
+}
+
+.elevated-disabled {
+  @apply outline-none
+  bg-surface/38
+  shadow-elevation-level-1
+  dark:bg-surface-dark/38;
+}
+
+.filled {
+  @apply bg-surface-container-highest
+  hover:shadow-elevation-level-1
+  dark:bg-surface-container-highest-dark;
+}
+
+.filled-disabled {
+  @apply outline-none
+  bg-surface-variant/38
+  dark:bg-surface-variant-dark/38;
+}
+
+.outlined {
+  @apply border
+  border-outline-variant
+  hover:shadow-elevation-level-1
+  focus:border-on-surface
+  bg-surface
+  dark:bg-surface-dark
+  dark:border-outline-variant-dark
+  dark:focus:border-on-surface-dark;
+}
+
+.outlined-disabled {
+  @apply outline-none
+  bg-outline/12
+  dark:bg-outline-dark/12;
+}
+
+@keyframes animate-ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-container {
+  @apply relative overflow-hidden;
+}
