@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "./context/themeContext";
 import { Checkbox } from "./components/Checkbox";
+import { Card } from "./components/Card";
+import { Button } from "./components/Buttons/Button";
 
 function App() {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -24,6 +26,11 @@ function App() {
         </label>
 
         <Checkbox checked={check} onChange={() => setCheck((prev) => !prev)} />
+
+        <Card>
+          <div className="size-30"></div>
+        </Card>
+        <Button size="xs">Helllloooooooo</Button>
       </div>
     </>
   );

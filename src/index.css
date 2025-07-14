@@ -111,4 +111,17 @@
   --shadow-elevation-level-5: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   --font-roboto: "Roboto", "sans-serif";
+
+  --animate-ripple: ripple 0.8s linear infinite;
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
 }

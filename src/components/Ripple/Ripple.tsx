@@ -48,7 +48,7 @@ export function Ripple({
           key={index}
           className={`absolute rounded-full ${
             highEmphasis ? highEmphasisMap[color] : colorMap[color]
-          } animate-ripple`}
+          } animate-ripple pointer-events-none`}
           style={{
             width: ripple.size,
             height: ripple.size,
