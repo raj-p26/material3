@@ -1,6 +1,6 @@
 import Check from "../icons/Check";
 import "./Checkbox.css";
-import { useRippleEffect } from "../../hooks/useRipple";
+import { Ripple } from "../Ripple";
 
 type CheckboxProps = {
   bg?: "primary" | "secondary" | "tertiary" | "error";
@@ -20,17 +20,13 @@ const bgStyles = {
 } as const;
 
 export function Checkbox(props: CheckboxProps) {
-  const { rippleContainerRef, createRipple } =
-    useRippleEffect<HTMLLabelElement>();
   const { bg = "primary", checked, onChange, disabled } = props;
 
-  return (
+  const content = (
     <>
       <label
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={disabled ? -1 : undefined}
         className="size-8 flex items-center justify-center rounded-full cursor-pointer focus:outline-2 focus:outline-secondary dark:focus:outline-secondary-dark"
-        ref={rippleContainerRef}
-        onClick={disabled ? undefined : createRipple}
       >
         <input
           type="checkbox"
@@ -39,6 +35,7 @@ export function Checkbox(props: CheckboxProps) {
           checked={checked}
           onChange={disabled ? undefined : onChange}
           disabled={disabled}
+          tabIndex={-1}
         />
         <span
           className={`checkbox-base ${
@@ -62,5 +59,13 @@ export function Checkbox(props: CheckboxProps) {
         </span>
       </label>
     </>
+  );
+
+  return disabled ? (
+    content
+  ) : (
+    <Ripple color="primary" highEmphasis>
+      {content}
+    </Ripple>
   );
 }

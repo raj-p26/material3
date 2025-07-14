@@ -6,6 +6,13 @@ describe("<Checkbox /> component", () => {
   afterEach(cleanup);
   it("render the <Checkbox /> component", () => {
     render(<Checkbox />);
-    expect(screen.getAllByRole("checkbox")[0]).toBeInTheDocument();
+    expect(screen.getByRole("checkbox")).toBeInTheDocument();
+  });
+
+  it("check if <Checkbox /> gets checked properly", () => {
+    render(<Checkbox checked />);
+    const checkbox = screen.getByRole("checkbox");
+
+    expect(checkbox).toHaveAttribute("checked");
   });
 });
