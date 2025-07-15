@@ -1,0 +1,19 @@
+@reference "../../index.css";
+
+.dialog-scrim {
+  @apply bg-scrim/32 size-full fixed inset-0;
+}
+
+.dialog-container {
+  @apply p-6 w-full max-w-[560px]
+  bg-surface-container-highest
+  text-on-surface-variant
+  dark:bg-surface-container-highest-dark
+  dark:text-on-surface-variant-dark
+  z-1000
+  shadow-elevation-level-3
+  rounded-[28px]
+  fixed
+  top-[50%] left-[50%]
+  translate-[-50%];
+}
