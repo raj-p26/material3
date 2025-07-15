@@ -1,6 +1,6 @@
 import type { IconProps } from "./icons.types";
 
-export function Plus(props: IconProps) {
+export default function Plus(props: IconProps) {
   const {
     fill = "none",
     strokeWidth = 1.5,
