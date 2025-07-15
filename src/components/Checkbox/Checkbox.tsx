@@ -1,6 +1,6 @@
-import Check from "../icons/Check";
+import Check from "@icons/Check";
 import "./Checkbox.css";
-import { Ripple } from "../Ripple";
+import { Ripple } from "@components/Ripple";
 
 type CheckboxProps = {
   bg?: "primary" | "secondary" | "tertiary" | "error";
@@ -25,7 +25,7 @@ export function Checkbox(props: CheckboxProps) {
   const content = (
     <>
       <label
-        tabIndex={disabled ? -1 : undefined}
+        tabIndex={disabled ? undefined : 0}
         className="size-8 flex items-center justify-center rounded-full cursor-pointer focus:outline-2 focus:outline-secondary dark:focus:outline-secondary-dark"
       >
         <input

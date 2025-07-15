@@ -31,7 +31,7 @@ export function Button(props: ButtonProps) {
   } as const;
 
   return (
-    <Ripple color={rippleColor[variant]}>
+    <Ripple color={rippleColor[variant]} highEmphasis={variant === "text"}>
       <button
         className={`button-base ${variant} ${styles[size]} ${className} ${
           shape === "round" ? "rounded-full" : `square-${size}`
