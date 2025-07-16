@@ -1,18 +1,50 @@
-import { Ripple } from "../../Ripple/Ripple.tsx";
-import "./Button.css";
+import { Ripple } from "@components/Ripple";
 import type { ButtonProps } from "./Button.types.ts";
+import { motion } from "motion/react";
+import "./Button.css";
+
+const buttonBorders = {
+  xs: 12,
+  sm: 12,
+  md: 16,
+  lg: 28,
+  xl: 28,
+};
+
+const activeButtonBorders = {
+  xs: 8,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 16,
+};
 
 export function Button(props: ButtonProps) {
   let {
     size = "sm",
-    children,
     className = "",
     shape = "round",
     variant = "filled",
     icon,
-    onClick,
-    ...otherProps
+    toggleButton,
+    // ...otherProps
   } = props;
+  if (!props.toggleButton && props.selected) {
+    throw new Error(
+      "`selected` prop can only be set if `toggleButton` prop is set"
+    );
+  }
+  const initialBorderRadius = shape === "round" ? 100 : buttonBorders[size];
+
+  if (props.toggleButton && variant === "text") {
+    throw new Error("text button does not support toggle mode");
+  }
+
+  function getButtonClass() {
+    return toggleButton
+      ? `${variant}-${props.selected ? "selected" : "unselected"}`
+      : variant;
+  }
 
   let styles = {
     xs: `h-[32px] px-3 hover:rounded-lg ${icon ? "gap-1" : ""} text-[14px]`,
@@ -32,16 +64,34 @@ export function Button(props: ButtonProps) {
 
   return (
     <Ripple color={rippleColor[variant]} highEmphasis={variant === "text"}>
-      <button
-        className={`button-base ${variant} ${styles[size]} ${className} ${
-          shape === "round" ? "rounded-full" : `square-${size}`
-        }`}
-        onClick={onClick}
-        {...otherProps}
+      <motion.button
+        key={`button-${Math.random() % 1000}`}
+        initial={{
+          borderRadius: initialBorderRadius,
+        }}
+        animate={{
+          borderRadius: props.selected
+            ? activeButtonBorders[size]
+            : initialBorderRadius,
+        }}
+        transition={{
+          duration: 0.35,
+          ease: [0.42, 1.67, 0.21, 0.9],
+        }}
+        whileHover={
+          props.disabled
+            ? undefined
+            : { borderRadius: activeButtonBorders[size] }
+        }
+        className={`button-base ${getButtonClass()} ${
+          styles[size]
+        } ${className} ${props.disabled ? "disabled-button" : ""}`}
+        onClick={props.onClick}
+        disabled={props.disabled}
       >
         {icon && <div className="flex items-center justify-center">{icon}</div>}
         <div>{props.children}</div>
-      </button>
+      </motion.button>
     </Ripple>
   );
 }

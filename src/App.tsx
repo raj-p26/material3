@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "./context/themeContext";
-import { Checkbox } from "./components/Checkbox";
-import { Card } from "./components/Card";
-import { Button } from "./components/Buttons/Button";
+import { Checkbox } from "@components/Checkbox";
+import { Dialog } from "@components/Dialog";
+import { Button } from "@components/Buttons/Button";
 
 function App() {
   const { theme, setTheme } = useContext(ThemeContext);
-  const [check, setCheck] = useState<boolean>(true);
+  const [active, setActive] = useState(false);
+  const [buttonSelected, setButtonSelected] = useState(false);
+
   const changeTheme = () => {
     if (!setTheme) return;
-    if (theme === "dark") setTheme("light");
-    else setTheme("dark");
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -24,13 +25,24 @@ function App() {
           <Checkbox checked={theme === "dark"} onChange={changeTheme} />
           Dark Mode
         </label>
+        <Button
+          onClick={() => {
+            // setActive((prev) => !prev);
+            setButtonSelected((prev) => !prev);
+          }}
+          variant="tonal"
+          shape="square"
+          size="xl"
+          toggleButton
+          selected={buttonSelected}
+          // disabled
+        >
+          {buttonSelected ? "s" : "u"}
+        </Button>
 
-        <Checkbox checked={check} onChange={() => setCheck((prev) => !prev)} />
-
-        <Card>
-          <div className="size-30"></div>
-        </Card>
-        <Button size="xs">Helllloooooooo</Button>
+        <Dialog active={active} onClose={() => setActive(false)}>
+          <Dialog.Title>Hi</Dialog.Title>
+        </Dialog>
       </div>
     </>
   );

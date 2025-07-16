@@ -1,7 +1,7 @@
 @reference "../../index.css";
 
 .dialog-scrim {
-  @apply bg-scrim/32 size-full fixed inset-0;
+  @apply bg-scrim size-full fixed inset-0;
 }
 
 .dialog-container {

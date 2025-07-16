@@ -13,15 +13,13 @@
   dark:outline-secondary-dark;
 }
 
-.filled,
-.tonal,
-.elevated,
-.outlined,
-.text {
+.disabled-button {
   @apply disabled:bg-on-surface/10
   disabled:text-on-surface/38
   disabled:dark:bg-on-surface-dark/10
-  disabled:dark:text-on-surface-dark/38;
+  disabled:hover:bg-on-surface/10
+  disabled:dark:text-on-surface-dark/38
+  dark:disabled:hover:bg-on-surface-dark/10;
 }
 
 .elevated {
@@ -31,11 +29,26 @@
   hover:shadow-elevation-level-2
   hover:bg-primary/8
   focus:bg-primary/10
-  focus:shadow-elevation-level-1
   dark:bg-surface-container-low-dark
   dark:text-primary-dark
   dark:hover:bg-primary-dark/8
   dark:focus:bg-primary-dark/10;
+}
+
+.elevated-unselected {
+  @apply bg-surface-container-low
+  text-primary
+  shadow-elevation-level-1
+  dark:bg-surface-container-low-dark
+  dark:text-primary-dark;
+}
+
+.elevated-selected {
+  @apply bg-primary
+  dark:bg-primary-dark
+  shadow-elevation-level-1
+  text-on-primary
+  dark:text-on-primary-dark;
 }
 
 .filled {
@@ -47,6 +60,20 @@
   dark:hover:bg-primary-dark/92;
 }
 
+.filled-unselected {
+  @apply bg-surface-container
+  dark:bg-surface-container-dark
+  text-on-surface-variant
+  dark:text-on-surface-variant-dark;
+}
+
+.filled-selected {
+  @apply bg-primary
+  text-on-primary
+  dark:bg-primary-dark
+  dark:text-on-primary-dark;
+}
+
 .tonal {
   @apply bg-secondary-container
   text-on-secondary-container
@@ -55,6 +82,22 @@
   dark:bg-secondary-container-dark
   dark:text-on-secondary-container-dark
   dark:hover:bg-secondary-container-dark/92;
+}
+
+.tonal-unselected {
+  @apply bg-secondary-container
+  text-on-secondary-container
+  hover:shadow-elevation-level-1
+  dark:bg-secondary-container-dark
+  dark:text-on-secondary-container-dark;
+}
+
+.tonal-selected {
+  @apply bg-secondary
+  text-on-secondary
+  hover:shadow-elevation-level-1
+  dark:bg-secondary-dark
+  dark:text-on-secondary-dark;
 }
 
 .outlined {
@@ -68,6 +111,22 @@
   dark:hover:bg-on-surface-variant-dark/8;
 }
 
+.outlined-unselected {
+  @apply border
+  border-outline-variant
+  bg-transparent
+  text-on-surface-variant
+  dark:border-outline-variant-dark
+  dark:text-on-surface-variant-dark;
+}
+
+.outlined-selected {
+  @apply bg-inverse-surface
+  text-inverse-on-surface
+  dark:bg-inverse-surface-dark
+  dark:text-inverse-on-surface-dark;
+}
+
 .text {
   @apply bg-transparent
   text-primary
@@ -76,33 +135,4 @@
   dark:text-primary-dark
   dark:hover:bg-primary-dark/8
   dark:focus:bg-primary-dark/10;
-}
-
-.square-xs,
-.square-sm {
-  @apply rounded-xl active:rounded-lg;
-}
-
-.square-md {
-  @apply rounded-2xl active:rounded-xl;
-}
-
-.square-lg,
-.square-xl {
-  @apply rounded-[28px] active:rounded-2xl;
-}
-
-@keyframes animate-ripple {
-  from {
-    transform: scale(0);
-    opacity: 1;
-  }
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-.ripple-container {
-  @apply relative overflow-hidden;
 }

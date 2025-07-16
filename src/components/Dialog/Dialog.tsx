@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DialogContext } from "./context";
+import { motion, AnimatePresence } from "motion/react";
 import type {
   DialogProps,
   DialogSubtitleProps,
@@ -9,17 +10,43 @@ import "./Dialog.css";
 
 export function Dialog(props: DialogProps) {
   const { onClose = () => {}, children, staticBackdrop = false } = props;
-  if (!props.active) return <></>;
 
   return (
     <DialogContext.Provider value={{ inside: true }}>
-      <div
-        className="dialog-scrim"
-        onClick={staticBackdrop ? undefined : onClose}
-      ></div>
-      <div className="dialog-container" role="dialog">
-        {children}
-      </div>
+      <AnimatePresence>
+        {props.active ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 0.32,
+            }}
+            transition={{
+              ease: [0.38, 1.21, 0.22, 1],
+              duration: 0.5,
+            }}
+            exit={{ opacity: 0 }}
+            key="backdrop"
+            className="dialog-scrim"
+            onClick={staticBackdrop ? undefined : onClose}
+          ></motion.div>
+        ) : undefined}
+        {props.active ? (
+          <motion.div
+            initial={{ scale: 0 }}
+            transition={{
+              ease: [0.38, 1.21, 0.22, 1],
+              duration: 0.5,
+            }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            className="dialog-container"
+            key="dialog-container"
+            role="dialog"
+          >
+            {children}
+          </motion.div>
+        ) : undefined}
+      </AnimatePresence>
     </DialogContext.Provider>
   );
 }

@@ -42,19 +42,6 @@ describe("Button component", () => {
     });
   });
 
-  it("checks if square button styles are set properly", () => {
-    render(<Button>Circle button</Button>);
-    expect(screen.getByRole("button")).toHaveClass(/rounded-*/);
-
-    const buttonTestID = "Square button";
-    render(
-      <Button data-testid={buttonTestID} shape="square">
-        {buttonTestID}
-      </Button>
-    );
-    expect(screen.getByTestId(buttonTestID)).toHaveClass(/square-*/);
-  });
-
   it("checks if button styles according to sizes are set or not", () => {
     const heights = { xs: 32, sm: 40, md: 56, lg: 96, xl: 136 };
 
