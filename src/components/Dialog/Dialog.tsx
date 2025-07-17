@@ -17,9 +17,7 @@ export function Dialog(props: DialogProps) {
         {props.active ? (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{
-              opacity: 0.32,
-            }}
+            animate={{ opacity: 0.32 }}
             transition={{
               ease: [0.38, 1.21, 0.22, 1],
               duration: 0.5,
