@@ -17,6 +17,7 @@ export default function Plus(props: IconProps) {
         strokeWidth={strokeWidth}
         stroke={stroke}
         className={className}
+        role="img"
       >
         <path
           strokeLinecap="round"
