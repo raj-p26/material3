@@ -39,7 +39,7 @@ export function Ripple({
 
   return (
     <div
-      className="relative p-1 overflow-hidden rounded-lg outline-none cursor-pointer size-fit"
+      className={`relative p-1 overflow-hidden rounded-lg outline-none cursor-pointer`}
       onClick={handleClick}
     >
       {children}

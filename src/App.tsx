@@ -1,13 +1,34 @@
-import { useContext, useState } from "react";
+import { useContext /*, useEffect */, useState } from "react";
 import { ThemeContext } from "./context/themeContext";
 import { Checkbox } from "@components/Checkbox";
-import { Dialog } from "@components/Dialog";
+import { Menu } from "@components/Menu";
+import Plus from "@icons/Plus";
+import Check from "@icons/Check";
 import { Button } from "@components/Buttons/Button";
+import { ListItem } from "@components/List";
+// import { Progress } from "@components/Progress/Progress";
+// import { Button } from "@components/Buttons/Button";
+// import Plus from "@icons/Plus";
+// import Minus from "@icons/Minus";
 
 function App() {
   const { theme, setTheme } = useContext(ThemeContext);
-  const [active, setActive] = useState(false);
-  const [buttonSelected, setButtonSelected] = useState(false);
+  // const [progress, setProgress] = useState<number>(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setProgress((prevProgress) => {
+  //       if (prevProgress < 100) {
+  //         return prevProgress + 1;
+  //       } else {
+  //         clearInterval(interval);
+  //         return prevProgress;
+  //       }
+  //     });
+  //   }, 100);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const changeTheme = () => {
     if (!setTheme) return;
@@ -25,24 +46,26 @@ function App() {
           <Checkbox checked={theme === "dark"} onChange={changeTheme} />
           Dark Mode
         </label>
-        <Button
-          onClick={() => {
-            // setActive((prev) => !prev);
-            setButtonSelected((prev) => !prev);
-          }}
-          variant="tonal"
-          shape="square"
-          size="xl"
-          toggleButton
-          selected={buttonSelected}
-          // disabled
-        >
-          {buttonSelected ? "s" : "u"}
+        {/* <Button icon={<Plus />} onClick={() => setProgress((pre) => pre + 10)}>
+          10
         </Button>
-
-        <Dialog active={active} onClose={() => setActive(false)}>
-          <Dialog.Title>Hi</Dialog.Title>
-        </Dialog>
+        <Button icon={<Minus />} onClick={() => setProgress((pre) => pre - 10)}>
+          10
+        </Button> */}
+        {/* <Progress value={progress} max={100} /> */}
+        <Button onClick={() => setShowMenu((pre) => !pre)}>
+          {showMenu ? "Hide Menu" : "Show Menu"}
+        </Button>
+        <Menu active={showMenu}>
+          <Menu.Item
+            leading={<Plus />}
+            onClick={() => console.log("hi")}
+            labelText="Hello"
+          />
+          <Menu.Item labelText="Hi" disabled />
+          <Menu.Item labelText="Hola" trailing={<Check />} />
+        </Menu>
+        <ListItem label="Hi" onClick={() => alert("hi")} />
       </div>
     </>
   );
