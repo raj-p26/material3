@@ -1,7 +1,7 @@
 {
   "name": "material3",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -35,5 +35,24 @@
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0",
     "vitest": "^3.2.4"
-  }
+  },
+  "author": {
+    "name": "Raj Peshavariya",
+    "email": "rajpeshavariya26@gmail.com",
+    "url": "https://github.com/raj-p26"
+  },
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raj-p26/material3"
+  },
+  "description": "A (sort of) library that implements most of the Material Design 3 components",
+  "keywords": [
+    "material design",
+    "react",
+    "typescript",
+    "vite",
+    "tailwind",
+    "react components"
+  ]
 }
