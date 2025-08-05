@@ -21,6 +21,7 @@ export function Ripple({
   children,
   color = "surface",
   highEmphasis = false,
+  className,
 }: RippleButtonProps) {
   const [ripples, setRipples] = useState<RippleSpecs[]>([]);
 
@@ -39,7 +40,9 @@ export function Ripple({
 
   return (
     <div
-      className={`relative p-1 overflow-hidden rounded-lg outline-none cursor-pointer`}
+      className={`relative p-1 overflow-hidden rounded-lg outline-none cursor-pointer ${
+        className ? className : ""
+      }`}
       onClick={handleClick}
     >
       {children}

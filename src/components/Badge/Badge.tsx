@@ -9,8 +9,8 @@ const badgeSizes = {
 };
 
 export function Badge(props: BadgeProps) {
-  let { size, text } = props;
-  if (text !== undefined) size = "lg";
+  let { size } = props;
+  if (props.text !== undefined) size = "lg";
   else size = "sm";
 
   return (
@@ -21,7 +21,7 @@ export function Badge(props: BadgeProps) {
       dark:bg-error-dark dark:text-on-error-dark
       text-[11px] font-medium`}
     >
-      <span>{text}</span>
+      <span>{props.text}</span>
     </div>
   );
 }

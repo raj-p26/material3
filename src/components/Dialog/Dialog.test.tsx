@@ -33,5 +33,9 @@ describe("<Dialog /> component tests", function () {
     expect(function () {
       render(<Dialog.SupportingText>Hi</Dialog.SupportingText>);
     }).toThrowError();
+
+    expect(function () {
+      render(<Dialog.Body>Hi</Dialog.Body>);
+    }).toThrowError();
   });
 });

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { Ripple } from "@components/Ripple";
 import type { ButtonProps } from "./Button.types.ts";
 import { motion } from "motion/react";
@@ -20,13 +21,14 @@ const activeButtonBorders = {
 };
 
 export function Button(props: ButtonProps) {
-  let {
+  const {
     size = "sm",
     className = "",
     shape = "round",
     variant = "filled",
     icon,
     toggleButton,
+    selected,
     // ...otherProps
   } = props;
   if (!props.toggleButton && props.selected) {
@@ -40,13 +42,13 @@ export function Button(props: ButtonProps) {
     throw new Error("text button does not support toggle mode");
   }
 
-  function getButtonClass() {
+  const getButtonClass = useCallback(() => {
     return toggleButton
-      ? `${variant}-${props.selected ? "selected" : "unselected"}`
+      ? `${variant}-${selected ? "selected" : "unselected"}`
       : variant;
-  }
+  }, [variant, toggleButton, selected]);
 
-  let styles = {
+  const styles = {
     xs: `h-[32px] px-3 hover:rounded-lg ${icon ? "gap-1" : ""} text-[14px]`,
     sm: `h-[40px] px-4 hover:rounded-lg ${icon ? "gap-2" : ""} text-[14px]`,
     md: `h-[56px] px-6 hover:rounded-xl ${icon ? "gap-2" : ""} text-[16px]`,
@@ -63,12 +65,17 @@ export function Button(props: ButtonProps) {
   } as const;
 
   return (
-    <Ripple color={rippleColor[variant]} highEmphasis={variant === "text"}>
+    <Ripple
+      color={rippleColor[variant]}
+      className="w-fit"
+      highEmphasis={variant === "text"}
+    >
       <motion.button
         key={`button-${Math.random() % 1000}`}
         initial={{
           borderRadius: initialBorderRadius,
         }}
+        /// TODO: change this to have animation when button is tapped and not hovered.
         animate={{
           borderRadius: props.selected
             ? activeButtonBorders[size]

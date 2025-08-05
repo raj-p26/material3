@@ -102,9 +102,7 @@ function MenuItem(props: MenuItemProps) {
   return disabled ? (
     innerContent
   ) : (
-    <Ripple color="surface" size="full">
-      {innerContent}
-    </Ripple>
+    <Ripple color="surface">{innerContent}</Ripple>
   );
 }
 

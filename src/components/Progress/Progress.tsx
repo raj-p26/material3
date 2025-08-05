@@ -6,7 +6,7 @@ interface ProgressProps extends React.AllHTMLAttributes<HTMLProgressElement> {
 }
 
 export function Progress(props: ProgressProps) {
-  let { value, min, max } = props;
+  const { value, min, max } = props;
   if (min && value && value > min) {
     throw new Error("progress value is less than minimum value");
   }

@@ -78,6 +78,15 @@ function DialogSubtitle(props: DialogSubtitleProps) {
   return <p className="font-normal text-[14px] mb-6">{props.children}</p>;
 }
 
+function DialogBody(props: React.PropsWithChildren) {
+  const context = useContext(DialogContext);
+  if (!context || !context.inside) {
+    throw new Error("<Dialog.Body> can only be used inside <Dialog>");
+  }
+
+  return <>{props.children}</>;
+}
+
 function DialogActions(props: React.PropsWithChildren) {
   const contextValue = useContext(DialogContext);
   if (!contextValue.inside) {
@@ -92,3 +101,4 @@ function DialogActions(props: React.PropsWithChildren) {
 Dialog.Title = DialogTitle;
 Dialog.SupportingText = DialogSubtitle;
 Dialog.Actions = DialogActions;
+Dialog.Body = DialogBody;
