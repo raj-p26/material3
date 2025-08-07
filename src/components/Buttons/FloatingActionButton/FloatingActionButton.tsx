@@ -1,4 +1,4 @@
-import { Ripple } from "../../Ripple";
+// import { Ripple } from "../../Ripple";
 import "./FloatingActionButton.css";
 import type { FABProps } from "./FloatingActionButton.types";
 
@@ -13,14 +13,14 @@ export function FloatingActionButton(props: FABProps) {
   } = props;
 
   return (
-    <Ripple color={variant}>
-      <button
-        {...rest}
-        onClick={onClick}
-        className={`block fab-${size} fab-${type}-${variant} cursor-pointer`}
-      >
-        {children}
-      </button>
-    </Ripple>
+    // <Ripple color={variant}>
+    <button
+      {...rest}
+      onClick={onClick}
+      className={`block fab-${size} fab-${type}-${variant} cursor-pointer`}
+    >
+      {children}
+    </button>
+    // </Ripple>
   );
 }

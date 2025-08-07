@@ -1,11 +1,11 @@
 import type { CardProps } from "./Card.types";
-import { Ripple } from "../Ripple/Ripple";
+// import { Ripple } from "../Ripple/Ripple";
 import "./Card.css";
 
 export function Card(props: CardProps) {
   const { variant = "elevated", disabled = false, onClick } = props;
 
-  const content = (
+  return (
     <div
       className={`card-base ${
         disabled ? `${variant}-disabled` : variant
@@ -17,5 +17,5 @@ export function Card(props: CardProps) {
     </div>
   );
 
-  return onClick ? <Ripple color="surface">{content}</Ripple> : content;
+  // return onClick ? <Ripple color="surface">{content}</Ripple> : content;
 }

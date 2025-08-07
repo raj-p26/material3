@@ -65,40 +65,34 @@ export function Button(props: ButtonProps) {
   } as const;
 
   return (
-    <Ripple
-      color={rippleColor[variant]}
-      className="w-fit"
-      highEmphasis={variant === "text"}
+    <motion.button
+      key={`button-${Math.random() % 1000}`}
+      initial={{
+        borderRadius: initialBorderRadius,
+      }}
+      /// TODO: change this to have animation when button is tapped and not hovered.
+      animate={{
+        borderRadius: props.selected
+          ? activeButtonBorders[size]
+          : initialBorderRadius,
+      }}
+      transition={{
+        duration: 0.35,
+        ease: [0.42, 1.67, 0.21, 0.9],
+      }}
+      whileHover={
+        props.disabled ? undefined : { borderRadius: activeButtonBorders[size] }
+      }
+      className={`button-base ${getButtonClass()} ${
+        styles[size]
+      } ${className} ${props.disabled ? "disabled-button" : ""}`}
+      onClick={props.onClick}
+      disabled={props.disabled}
     >
-      <motion.button
-        key={`button-${Math.random() % 1000}`}
-        initial={{
-          borderRadius: initialBorderRadius,
-        }}
-        /// TODO: change this to have animation when button is tapped and not hovered.
-        animate={{
-          borderRadius: props.selected
-            ? activeButtonBorders[size]
-            : initialBorderRadius,
-        }}
-        transition={{
-          duration: 0.35,
-          ease: [0.42, 1.67, 0.21, 0.9],
-        }}
-        whileHover={
-          props.disabled
-            ? undefined
-            : { borderRadius: activeButtonBorders[size] }
-        }
-        className={`button-base ${getButtonClass()} ${
-          styles[size]
-        } ${className} ${props.disabled ? "disabled-button" : ""}`}
-        onClick={props.onClick}
-        disabled={props.disabled}
-      >
-        {icon && <div className="flex items-center justify-center">{icon}</div>}
-        <div>{props.children}</div>
-      </motion.button>
-    </Ripple>
+      {/* <Ripple color={rippleColor[variant]} highEmphasis={variant === "text"}> */}
+      {icon && <div className="flex items-center justify-center">{icon}</div>}
+      <div>{props.children}</div>
+      {/* </Ripple> */}
+    </motion.button>
   );
 }

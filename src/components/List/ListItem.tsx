@@ -1,9 +1,9 @@
-import { Ripple } from "@components/Ripple";
+// import { Ripple } from "@components/Ripple";
 import type { ListItemProps } from "./ListItem.types";
 
 export function ListItem(props: ListItemProps) {
   const { onClick, disabled } = props;
-  const content = (
+  return (
     <div
       role="listitem"
       tabIndex={onClick && !disabled ? 0 : undefined}
@@ -47,5 +47,5 @@ export function ListItem(props: ListItemProps) {
       )}
     </div>
   );
-  return !disabled && onClick ? <Ripple>{content}</Ripple> : content;
+  // return !disabled && onClick ? <Ripple>{content}</Ripple> : content;
 }

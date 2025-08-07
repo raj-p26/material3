@@ -1,4 +1,4 @@
-import { Ripple } from "@components/Ripple";
+// import { Ripple } from "@components/Ripple";
 import type { MenuItemProps, MenuProps } from "./Menu.types";
 import { MenuContext } from "./context";
 import { useContext } from "react";
@@ -45,7 +45,7 @@ function MenuItem(props: MenuItemProps) {
     throw new Error("MenuItem should only be used inside <Menu>");
   }
   const { leading, labelText, trailing, disabled } = props;
-  const innerContent = (
+  return (
     <div
       onClick={props.onClick}
       tabIndex={props.onClick ? 0 : undefined}
@@ -99,11 +99,11 @@ function MenuItem(props: MenuItemProps) {
     </div>
   );
 
-  return disabled ? (
-    innerContent
-  ) : (
-    <Ripple color="surface">{innerContent}</Ripple>
-  );
+  // return disabled ? (
+  //   innerContent
+  // ) : (
+  //   <Ripple color="surface">{innerContent}</Ripple>
+  // );
 }
 
 Menu.Item = MenuItem;

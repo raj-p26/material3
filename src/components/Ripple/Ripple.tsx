@@ -1,3 +1,5 @@
+/* eslint-disable-no-unused-vars */
+/// TODO: work on Ripple component
 import React, { useState } from "react";
 import type { RippleButtonProps, RippleSpecs } from "./Ripple.types";
 
@@ -21,45 +23,43 @@ export function Ripple({
   children,
   color = "surface",
   highEmphasis = false,
-  className,
 }: RippleButtonProps) {
-  const [ripples, setRipples] = useState<RippleSpecs[]>([]);
+  function createRipple(event: React.MouseEvent) {
+    const button = event.currentTarget;
+    const ripple = document.createElement("div");
 
-  const handleClick = (event: React.MouseEvent) => {
-    const button = event.currentTarget.getBoundingClientRect();
-    const size = Math.max(button.width, button.height);
-    const x = event.clientX - button.left - size / 2;
-    const y = event.clientY - button.top - size / 2;
-
-    setRipples((prevRipples) => [...prevRipples, { top: y, left: x, size }]);
-
-    setTimeout(() => {
-      setRipples((prevRipples) => prevRipples.slice(1));
-    }, 700);
-  };
+    button.appendChild(ripple);
+    const d = Math.max(button.clientWidth, button.clientHeight);
+    ripple.style.width = ripple.style.height = d + "px";
+    const buttonRect = button.getBoundingClientRect();
+    // ripple.classList.add(
+    //   highEmphasis ? highEmphasisMap[color] : colorMap[color]
+    // );
+    const rippleColor = highEmphasis
+      ? `--color-${color}-container`
+      : `--color-${color}`;
+    ripple.style.left = event.clientX - buttonRect.left - d / 2 + "px";
+    ripple.style.top = event.clientY - buttonRect.top - d / 2 + "px";
+    ripple.style.backgroundColor = `var(${rippleColor})`;
+    ripple.style.animationDuration = `500ms`;
+    ripple.style.animationTimingFunction = `cubic-bezier(0.34, 0.8, 0.34, 1)`;
+    ripple.classList.add("ripple");
+    ripple.addEventListener("animationend", () => {
+      ripple.remove();
+    });
+  }
 
   return (
     <div
-      className={`relative p-1 overflow-hidden rounded-lg outline-none cursor-pointer ${
-        className ? className : ""
-      }`}
-      onClick={handleClick}
+      className="ripple-container"
+      style={{
+        borderRadius: `calc(infinity * 1)`,
+        width: "100%",
+        height: "100%",
+      }}
+      onClick={createRipple}
     >
       {children}
-      {ripples.map((ripple, index) => (
-        <span
-          key={index}
-          className={`absolute rounded-full ${
-            highEmphasis ? highEmphasisMap[color] : colorMap[color]
-          } animate-ripple pointer-events-none`}
-          style={{
-            width: ripple.size,
-            height: ripple.size,
-            top: ripple.top,
-            left: ripple.left,
-          }}
-        />
-      ))}
     </div>
   );
 }

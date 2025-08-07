@@ -5,7 +5,7 @@ import type {
 } from "./NavigationDrawer.types";
 import { useContext } from "react";
 import { NavigationDrawerContext } from "./context";
-import { Ripple } from "@components/Ripple";
+// import { Ripple } from "@components/Ripple";
 import X from "@icons/X";
 import { Button } from "@components/Buttons/Button";
 
@@ -71,20 +71,20 @@ function Item(props: NavigationDrawerItemProps) {
   const { active, labelText, onSelect } = props;
 
   return (
-    <Ripple className="w-[336px]">
-      <div
-        tabIndex={0}
-        onClick={onSelect}
-        role="menuitem"
-        className={`rounded-full py-3 px-4 -outline-offset-3 focus:outline-3 outline-secondary dark:outline-secondary-dark ${
-          active
-            ? "bg-secondary-container text-on-secondary-container dark:bg-secondary-container-dark dark:text-on-secondary-container-dark"
-            : "hover:bg-on-surface/8 dark:hover:bg-on-surface-dark/8 focus:bg-on-surface/10 dark:focus:bg-on-surface-dark/10 text-on-surface-variant dark:text-on-surface-variant-dark"
-        }`}
-      >
-        {labelText && <p>{labelText}</p>}
-      </div>
-    </Ripple>
+    // <Ripple className="w-[336px]">
+    <div
+      tabIndex={0}
+      onClick={onSelect}
+      role="menuitem"
+      className={`rounded-full py-3 px-4 -outline-offset-3 focus:outline-3 outline-secondary dark:outline-secondary-dark ${
+        active
+          ? "bg-secondary-container text-on-secondary-container dark:bg-secondary-container-dark dark:text-on-secondary-container-dark"
+          : "hover:bg-on-surface/8 dark:hover:bg-on-surface-dark/8 focus:bg-on-surface/10 dark:focus:bg-on-surface-dark/10 text-on-surface-variant dark:text-on-surface-variant-dark"
+      }`}
+    >
+      {labelText && <p>{labelText}</p>}
+    </div>
+    // </Ripple>
   );
 }
 
