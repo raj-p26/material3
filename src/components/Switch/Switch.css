@@ -1,0 +1,60 @@
+@reference "../../index.css";
+
+.switch-track-base {
+  @apply transition-all
+  ease-default-effects
+  duration-250
+  h-8 w-13
+  flex items-center
+  rounded-full border-2
+  shadow-elevation-level-1
+  cursor-pointer;
+}
+
+.switch-track-active-selected {
+  @apply bg-primary
+  dark:bg-primary-dark
+  border-primary
+  dark:border-primary-dark;
+}
+
+.switch-track-active-unselected {
+  @apply bg-surface-container-highest
+  border-outline
+  dark:bg-surface-container-highest-dark
+  dark:border-outline-dark;
+}
+
+.switch-track-disabled-selected {
+  @apply bg-on-surface/12
+  border-outline
+  dark:bg-on-surface-dark/12
+  dark:border-outline-dark;
+}
+
+.switch-track-disabled-unselected {
+  @apply bg-surface-container-highest/12
+  border-outline
+  dark:bg-surface-container-highest-dark/12
+  dark:border-outline-dark;
+}
+
+.switch-handle-base {
+  @apply transition-all ease-default-effects duration-250 rounded-full;
+}
+
+.switch-handle-active-selected {
+  @apply bg-on-primary dark:bg-on-primary-dark translate-x-[100%] size-6;
+}
+
+.switch-handle-active-unselected {
+  @apply translate-x-[0%] bg-outline dark:bg-outline-dark size-4 ml-1;
+}
+
+.switch-handle-disabled-selected {
+  @apply bg-surface dark:bg-surface-dark translate-x-[100%] size-6;
+}
+
+.switch-handle-disabled-unselected {
+  @apply translate-x-[0%] bg-on-surface/38 dark:bg-on-surface-dark/38 size-4 ml-1;
+}

@@ -1,17 +1,18 @@
 import type { SwitchProps } from "./Switch.types";
+import "./Switch.css";
 
 export function Switch(props: SwitchProps) {
-  const { selected, onToggle } = props;
+  const { selected, disabled, onToggle } = props;
+  const disableState = disabled ? "disabled" : "active";
+  const selectionState = selected ? "selected" : "unselected";
   return (
     <>
       <div
-        onClick={onToggle}
-        className="h-8 w-13 flex items-center rounded-full border-2 border-outline dark:border-outline-dark bg-surface-container-highest dark:bg-surface-container-highest-dark shadow-elevation-level-1 cursor-pointer"
+        onClick={disabled ? undefined : onToggle}
+        className={`switch-track-base switch-track-${disableState}-${selectionState}`}
       >
         <div
-          className={`rounded-full size-6 ${
-            selected ? "bg-primary dark:bg-primary-dark translate-x-[100%]" : ""
-          }`}
+          className={`switch-handle-base switch-handle-${disableState}-${selectionState}`}
         ></div>
       </div>
     </>
